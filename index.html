@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<style>
+body {
+  background: no-repeat center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
+  color: white;
+  font-family: Arial;
+  font-size: xx-large;
+}
+div {
+  position:absolute;
+  bottom:10px;
+  left:0px;
+  width:100%;
+  text-align:center;
+}
+a { text-decoration: none; }
+a:link {color:#FFFFFF;}
+a:visited {color:#FFFFFF;}
+a:hover {color:#FFFFFF;}
+a:active {color:#FFFFFF;}
+</style>
+</head>
+<body>
+<br/><a href="./index.html">+</a>
+<center>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-6066386183446029";
+google_ad_slot = "4219937339";
+google_ad_width = 728;
+google_ad_height = 90;
+if(Math.random() > 0.2){
+  google_ad_width = 0;
+  google_ad_height = 0;
+}
+//-->
+</script>
+<script type="text/javascript" src="https://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</center>
+<div id="content">
+<h1>Contact</h1>
+<form action="./index.html" method="get">
+<input type="text" name="title" style="width:980; font-size:xx-large;" value="Name" onfocus="if (this.value == 'Name') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Name';}"/><br/>
+<input type="text" name="background" style="width:980; font-size:xx-large;" value="Background URL" onfocus="if (this.value == 'Background URL') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Background URL';}"/><br/>
+<input type="text" name="icon" style="width:980; font-size:xx-large;" value="Icon URL" onfocus="if (this.value == 'Icon URL') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Icon URL';}"/><br/>
+<input type="text" name="phone" style="width:980; font-size:xx-large;" value="Phone" onfocus="if (this.value == 'Phone') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Phone';}"/><br/>
+<input type="text" name="email" style="width:980; font-size:xx-large;" value="Email" onfocus="if (this.value == 'Email') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Email';}"/><br/>
+<input type="text" name="skype" style="width:980; font-size:xx-large;" value="Skype ID" onfocus="if (this.value == 'Skype ID') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Skype ID';}"/><br/>
+<input type="text" name="facetime" style="width:980; font-size:xx-large;" value="FaceTime email/phone" onfocus="if (this.value == 'FaceTime email/phone') {this.value = '';}" onblur="if (this.value == '') {this.value = 'FaceTime email/phone';}"/><br/>
+<br/><input type="submit" value="Create" style="width:980; font-size:xx-large;" />
+</form>
+<a href="instructions.png">Instructions</a> <a href="example.png">Example</a>
+</div>
+<script>
+function input(){
+  var variables = {};
+  var parts = window.location.href.replace(
+    /[?&]+([^=&]+)=([^&]*)/gi,
+    function(ignore, key, value){variables[key] = value;}
+  );
+  return(variables);
+}
+
+var content = "";
+var variables = input();
+
+var title = variables["title"];
+if(typeof title === "undefined" || "" == title){
+}else{
+  document.title = decodeURI(title.replace("+", " "));
+}
+
+var background = variables["background"];
+if(typeof background === "undefined" || "" == background || "Backgroung URL" == background){
+}else{
+  background = decodeURIComponent(background);
+  document.body.style.backgroundImage = "url('" + background + "')";
+}
+
+var icon = variables["icon"];
+if(typeof icon === "undefined" || "" == icon || "Icon URL" == icon){
+}else{
+  icon = decodeURIComponent(icon);
+  var head = document.getElementsByTagName("head")[0];
+  var item = document.createElement("link");
+  item.rel = "shortcut icon";
+  item.href = icon;
+  head.appendChild(item);
+  var item = document.createElement("link");
+  item.rel = "apple-touch-icon";
+  item.href = icon;
+  head.appendChild(item);
+}
+
+var phone = variables["phone"];
+if(typeof phone === "undefined" || "" == phone || "Phone" == phone){
+}else{
+  phone = decodeURIComponent(phone);
+  content += "<a href=\"tel:" + phone + "\"><img src=\"phone.png\" width=\"20%\"/></a>"
+}
+
+var email = variables["email"];
+if(typeof email === "undefined" || "" == email || "Email" == email){
+}else{
+  email = decodeURIComponent(email);
+  content += "<a href=\"mailto:" + email + "\"><img src=\"email.png\" width=\"20%\"/></a>"
+}
+
+var skype = variables["skype"];
+if(typeof skype === "undefined" || "" == skype || "Skype ID" == skype){
+}else{
+  skype = decodeURIComponent(skype);
+  content += "<a href=\"skype:" + skype + "\"><img src=\"skype.png\" width=\"20%\"/></a>"
+}
+
+var facetime = variables["facetime"];
+if(typeof facetime === "undefined" || "" == facetime || "FaceTime email/phone" == facetime){
+}else{
+  facetime = decodeURIComponent(facetime);
+  content += "<a href=\"facetime:" + facetime + "\"><img src=\"camera.png\" width=\"20%\"/></a>"
+  content += "<a href=\"facetime-audio:" + facetime + "\"><img src=\"microphone.png\" width=\"20%\"/></a>"
+}
+
+if("" != content){
+  document.getElementById("content").innerHTML = content;
+}
+</script>
+</body>
+</html>
